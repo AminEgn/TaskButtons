@@ -1,0 +1,28 @@
+# pyqt
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtGui import QIcon, QFont, QCursor
+
+
+class BaseButton(QPushButton):
+    """Basic Button"""
+    width = 0
+    height = 0
+    icon = ''
+    iconSize = 16
+    font = ''
+    fontSize = 12
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.craftButton(self.width, self.height)
+
+    def craftButton(self, width, height):
+        self.setFixedSize(width, height)
+        self.setCursor(QCursor(Qt.PointingHandCursor))
+        if self.font:
+            self.setFont(QFont(self.font, self.fontSize))
+        if self.icon:
+            self.setIcon(QIcon(self.icon))
+            self.setIconSize(QSize(self.iconSize, self.iconSize))
+
