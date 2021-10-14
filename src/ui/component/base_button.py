@@ -8,10 +8,11 @@ class BaseButton(QPushButton):
     """Basic Button"""
     width = 0
     height = 0
-    icon = ''
-    iconSize = 16
+    alt = ''
     font = ''
     fontSize = 12
+    icon = ''
+    iconSize = 16
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -20,9 +21,10 @@ class BaseButton(QPushButton):
     def craftButton(self, width, height):
         self.setFixedSize(width, height)
         self.setCursor(QCursor(Qt.PointingHandCursor))
+        if self.alt:
+            self.setToolTip(self.alt)
         if self.font:
             self.setFont(QFont(self.font, self.fontSize))
         if self.icon:
             self.setIcon(QIcon(self.icon))
             self.setIconSize(QSize(self.iconSize, self.iconSize))
-

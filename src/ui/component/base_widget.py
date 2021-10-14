@@ -1,5 +1,5 @@
 # pyqt
-from PyQt5.QtWidgets import QWidget, QHBoxLayout
+from PyQt5.QtWidgets import QWidget, QVBoxLayout
 
 
 class BaseWidget(QWidget):
@@ -15,7 +15,8 @@ class BaseWidget(QWidget):
         self.connectSignals()
 
     def craftLayout(self):
-        self.generalLayout = QHBoxLayout()
+        self.generalLayout = QVBoxLayout()
+        self.generalLayout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.generalLayout)
 
     def craftWidget(self):
