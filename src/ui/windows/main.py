@@ -1,4 +1,5 @@
 # internal
+from src.ui.resources import icons
 from src.ui.component import BaseWidget, BaseButton
 # pyqt
 from PyQt5.QtPrintSupport import QPrinter, QPrintDialog
@@ -66,7 +67,7 @@ class MainWindow(QMainWindow):
         self.menu.btnRed.clicked.connect(self.print_document)
 
     def SystemTray(self):
-        icon = QIcon(r'E:\logo.ico')
+        icon = QIcon(':/icons/tray-icon')
         menu = QMenu()
         action_show = menu.addAction("Show/Hide")
         action_show.triggered.connect(lambda: self.hide() if self.isVisible() else self.show())
