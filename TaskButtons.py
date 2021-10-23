@@ -14,6 +14,7 @@ def single_instance(app_name):
         # get process list
         apps = os.popen(f'TASKLIST /FI "IMAGENAME eq {app_name.lower()}*"').read()\
             .replace('               ', '\n').split('\n')
+
         # empty list
         expected_list = list()
         for p in apps:
@@ -24,8 +25,8 @@ def single_instance(app_name):
             return False
         else:
             return True
-    except Exception as e:
-        print(str(e))
+    except Exception:
+        pass
 
 
 def main():
