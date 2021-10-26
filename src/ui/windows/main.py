@@ -88,41 +88,6 @@ class MainWindow(QMainWindow):
             else:
                 self.hide()
 
-    # def print_(self):
-    #     printer = QPrinter()
-    #     dlg = QPrintDialog(printer, self)
-    #     if dlg.exec_():
-    #         self.webview.print_(printer)
-    #
-    # file = r'E:\Projects\TaskButtons\index.html'
-    #
-    # @staticmethod
-    # def print_document(document, verse_key=1, pdf=False, copies=1, skip=False):
-    #     printer = QPrinter(QPrinter.HighResolution)
-    #
-    #     if not pdf:
-    #         printer.setOutputFormat(QPrinter.NativeFormat)
-    #     else:
-    #         printer.setOutputFormat(QPrinter.PdfFormat)
-    #         printer.setOutputFileName(ROOT + 'verse.pdf')
-    #     # printer.setPaperSize(QPrinter.A4)
-    #     printer.setCopyCount(copies)
-    #
-    #     printer.setPageMargins(10, 10, 10, 10, QPrinter.Millimeter)
-    #
-    #     doc = QTextDocument()
-    #
-    #     doc.setHtml(concatenate_pages(document, verse_key, skip))
-    #
-    #     dialog = QPrintPreviewDialog(printer)
-    #     dialog.setWindowTitle('Print preview: parse results')
-    #
-    #     def preview():
-    #         doc.print_(printer)
-    #
-    #     dialog.paintRequested.connect(preview)
-    #     dialog.exec_()
-
     def _styleSheet(self):
         self.setStyleSheet("""
             background: white;
