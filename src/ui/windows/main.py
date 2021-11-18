@@ -50,7 +50,9 @@ class MainWindow(QMainWindow):
         # self.connectSignal()
         # window widget list
         self.windowList = [self.redWindow, self.greenWindow, self.blueWindow, self.yellowWindow]
-        self.SystemTray()
+        self.systemTray()
+        self.connectSignal()
+
 
     def menuHandler(self, index):
         for i, win in enumerate(self.windowList):
@@ -64,9 +66,9 @@ class MainWindow(QMainWindow):
         self.ani.start()
 
     def connectSignal(self):
-        self.menu.btnRed.clicked.connect(self.print_document)
+        self.menu.btnRed.clicked.connect(self.showNotif)
 
-    def SystemTray(self):
+    def systemTray(self):
         icon = QIcon(':/icons/tray-icon')
         menu = QMenu()
         action_show = menu.addAction("Show/Hide")
@@ -76,8 +78,7 @@ class MainWindow(QMainWindow):
         self.tray = QSystemTrayIcon(self)
         self.tray.setIcon(icon)
         self.tray.setContextMenu(menu)
-        self.tray.setToolTip('Un go!')
-        self.tray.showMessage('WTF?', 'FAQ')
+        self.tray.setToolTip('Task Buttons')
         self.tray.activated.connect(self.onTrayIconActivated)
         self.tray.show()
 
@@ -87,6 +88,10 @@ class MainWindow(QMainWindow):
                 self.show()
             else:
                 self.hide()
+
+    # show message in tray icon
+    def showNotif(self):
+        self.tray.showMessage('Task Buttons', 'Dont click anymore')
 
     def _styleSheet(self):
         self.setStyleSheet("""
@@ -120,19 +125,23 @@ class Menu(BaseWidget):
     def craftStyle(self):
         self.setStyleSheet("""
             QPushButton {
-                background: QLinearGradient(x1: 1 y1: 1,
-                                            x2: 0 y2: 0,
-                                            stop: 1 #c2e59c,
-                                            stop: 0 #64b3f4);
+                background: QLinearGradient(
+                    x1: 1 y1: 1,
+                    x2: 0 y2: 0,
+                    stop: 1 #c2e59c,
+                    stop: 0 #64b3f4
+                );
                 border: 1px solid #ccc;
                 color: #555;
                 border-radius: 50px;
             }
             QPushButton:hover {
-                background: QLinearGradient(x1: 1 y1: 1,
-                                            x2: 0 y2: 0,
-                                            stop: 1 #64b3f4,
-                                            stop: 0 #c2e59c);
+                background: QLinearGradient(
+                    x1: 1 y1: 1,
+                    x2: 0 y2: 0,
+                    stop: 1 #64b3f4,
+                    stop: 0 #c2e59c
+                );
                 border-color: #888;
                 color: #222;
             }
@@ -141,6 +150,9 @@ class Menu(BaseWidget):
                 color: #000
             }
         """)
+
+    def connectSignals(self):
+        pass
 
 
 class RedWindow(BaseWidget):

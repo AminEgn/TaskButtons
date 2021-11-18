@@ -1,6 +1,7 @@
 import sys, os
 from PyQt5 import QtCore, QtWidgets, QtPrintSupport, QtGui
 
+
 class Window(QtWidgets.QWidget):
     def __init__(self):
         super(Window, self).__init__()
@@ -51,8 +52,8 @@ class Window(QtWidgets.QWidget):
         self.buttonPrint.setEnabled(enable)
         self.buttonPreview.setEnabled(enable)
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Window()
     window.resize(640, 480)
